@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление груза</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <form action="#" th:action="@{/search}" th:object="${filters}" method="post">
+            <table>
+                <tr>
+                    <td>id груза:</td>
+                    <td><input type="text" th:field="*{id}"></td>
+                </tr>
+
+                <tr>
+                    <td>название груза:</td>
+                    <td><input type="text" th:field="*{name}"></td>
+                </tr>
+
+                <tr>
+                    <td>Содержимое груза:</td>
+                    <td><input type="text" th:field="*{content}"></td>
+                </tr>
+
+                <tr>
+                    <td>Цена груза:</td>
+                    <td><input type="text" th:field="*{price}"></td>
+                </tr>
+
+                <tr>
+                    <td>Город отправки:</td>
+                    <td><input type="text" th:field="*{city_send}"></td>
+                </tr>
+
+                <tr>
+                    <td>Дата отправки:</td>
+                    <td><input type="text" th:field="*{date_send}"></td>
+                </tr>
+
+                <tr>
+                    <td>Город прибытия:</td>
+                    <td><input type="text" th:field="*{city_arrive}"></td>
+                </tr>
+
+                <tr>
+                    <td>Дата прибытия:</td>
+                    <td><input type="text" th:field="*{date_arrive}"></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-primary" data-toggle="button">Найти</button>
+                        <!--                    Здесь модальное окно сделать можно-->
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+<!--        <form action="#" th:object="${filteredList}" method="get">-->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Содержимое</th>
+                <th>Цена</th>
+                <th>Город отправки</th>
+                <th>Дата отправки</th>
+                <th>Город прибытия</th>
+                <th>Дата прибытия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cargo : ${filteredList}">
+                <td th:text="${cargo.id}">ID</td>
+                <td th:text="${cargo.name}">Название</td>
+                <td th:text="${cargo.content}">Содержимое</td>
+                <td th:text="${cargo.price}">Цена</td>
+                <td th:text="${cargo.city_send}">Город отправки</td>
+                <td th:text="${cargo.date_send}">Дата отправки</td>
+                <td th:text="${cargo.city_arrive}">Город прибытия</td>
+                <td th:text="${cargo.date_arrive}">Дата прибытия</td>
+            </tr>
+            </tbody>
+        </table>
+<!--        </form>-->
+    </div>
+</div>
+<div style="text-align: center;"><a href="/">
+    <button type="button" class="btn btn-info">Вернуться</button>
+</a>
+</div>
+</body>
+</html>

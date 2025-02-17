@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargo Statistics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Cargo Statistics</h1>
+<canvas id="cargoChart" width="800" height="400"></canvas>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const stat = /*[[${stat}]]*/ [];
+
+
+    const labels = stat.map(item => item.date); // Даты отправки грузов
+    const cargoCounts = stat.map(item => item.cargoCount); // Количество грузов
+    const totalCosts = stat.map(item => item.totalCost); // Общая стоимость грузов
+
+    const ctx = document.getElementById('cargoChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Number of Cargos',
+                    data: cargoCounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Total Cost',
+                    data: totalCosts,
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Values'
+                    }
+                }
+            }
+        }
+    });
+    /*]]>*/
+</script>
+<a href="/">
+    <button type="button" class="btn btn-info">Вернуться</button>
+</a>
+</body>
+</html>

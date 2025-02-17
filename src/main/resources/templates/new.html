@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление груза</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <form action="#" th:action="@{/save}" th:object="${cargo}" method="post">
+            <table>
+
+                <tr>
+                    <td>название груза:</td>
+                    <td><input type="text" th:field="*{name}"></td>
+                </tr>
+
+                <tr>
+                    <td>Содержимое груза:</td>
+                    <td><input type="text" th:field="*{content}"></td>
+                </tr>
+
+                <tr>
+                    <td>Цена груза:</td>
+                    <td><input type="text" th:field="*{price}"></td>
+                </tr>
+
+                <tr>
+                    <td>Город отправки:</td>
+                    <td>
+                        <select th:field="*{city_send}">
+                            <option value="" disabled selected>Выберите город</option>
+                            <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"></option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Дата отправки:</td>
+                    <td><input type="text" th:field="*{date_send}"></td>
+                </tr>
+
+
+                <tr>
+                    <td>Город прибытия:</td>
+                    <td>
+                        <select th:field="*{city_arrive}">
+                            <option value="" disabled selected>Выберите город</option>
+                            <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"></option>
+                        </select>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Дата прибытия:</td>
+                    <td><input type="text" th:field="*{date_arrive}"></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-primary" data-toggle="button">Отправить</button>
+                        <!--                    Здесь модальное окно сделать можно-->
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</div>
+<div style="text-align: center;"><a href="/">
+    <button type="button" class="btn btn-info">Вернуться</button>
+</a>
+</div>
+</body>
+</html>

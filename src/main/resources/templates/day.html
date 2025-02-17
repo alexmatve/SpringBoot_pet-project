@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<table id="1" class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th scope="col">День</th>
+        <th scope="col">Количество груза</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="stat: ${dayAmount}">
+        <th scope="row" class="text-black" th:text="${stat.getDate()}">дата груза отсутствует</th>
+        <th scope="row" class="text-black" th:text="${stat.getCargoCount()}">количество груза отсутствует</th>
+    </tr>
+    </tbody>
+</table>
+
+<div style="display: flex;">
+    <a href="/">
+        <button type="button" class="btn btn-info">Вернуться</button>
+    </a>
+</div>
+
+
+<!--<div style="text-align: center;"><a href="/new">-->
+<!--    <button type="button" class="btn btn-info">Добавить груз</button>-->
+<!--</a>-->
+<!--</div>-->
+
+</body>
+</html>
